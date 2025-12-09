@@ -19,7 +19,7 @@ G-MODE is a single-page web application that presents a science fiction-inspired
 
 ## Features
 
-- Pure HTML, CSS, and JavaScript (no dependencies)
+- Pure HTML, CSS, and JavaScript (no external library dependencies)
 - Responsive design optimized for mobile devices
 - Smooth animations and transitions
 - Interactive button with ripple effects
