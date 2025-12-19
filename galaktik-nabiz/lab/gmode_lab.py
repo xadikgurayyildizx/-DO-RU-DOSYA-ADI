@@ -9,6 +9,7 @@ import socketserver
 import webbrowser
 import os
 import sys
+import errno
 from pathlib import Path
 
 
@@ -85,7 +86,7 @@ def start_lab_mode(port=8080, auto_open=True):
         print("\n\n[LAB] Deney tamamlandı, kapatılıyor...")
         sys.exit(0)
     except OSError as e:
-        if e.errno == 48 or e.errno == 98:  # Port already in use
+        if e.errno == errno.EADDRINUSE:  # Port already in use
             print(f"\n✗ HATA: Port {port} kullanımda!")
             print(f"  Farklı bir port deneyin: python {sys.argv[0]} --port 8081")
         else:
