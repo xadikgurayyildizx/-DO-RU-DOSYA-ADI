@@ -266,13 +266,17 @@ const app = document.querySelector(".app");
 const warpStatus = document.getElementById("warpStatus");
 const gToggle = document.getElementById("gToggle");
 
+// Configuration constants
+const PULSE_INTERVAL_MS = 2400;  // Interval between pulse animations
+const PULSE_DURATION_MS = 170;   // Duration of each pulse effect
+
 let isActive = false;
 let bootTimers = [];
 let pulseInterval = null;
 
 gToggle.addEventListener("click", () => {
   gToggle.classList.remove("ripple","glow");
-  void gToggle.offsetWidth;
+  void gToggle.offsetWidth;  // Force reflow to ensure class removal is applied before re-adding
   gToggle.classList.add("ripple","glow");
 
   if (!isActive) startBoot();
@@ -310,8 +314,8 @@ function startPulse(){
   clearPulse();
   pulseInterval = setInterval(()=>{
     app.classList.add("pulse-active");
-    setTimeout(()=>app.classList.remove("pulse-active"),170);
-  },2400);
+    setTimeout(()=>app.classList.remove("pulse-active"),PULSE_DURATION_MS);
+  },PULSE_INTERVAL_MS);
 }
 
 function clearPulse(){
